@@ -103,5 +103,29 @@ public class usuarioDao {
         }
         return validar;
     }
-
+    
+    public boolean validarUsuarioTeste(String usuario, String senha) throws ClassNotFoundException, SQLException {
+        String sql = "SELECT * FROM usuario where nomeUsuario = ? and senhaUsuario = ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        usuarioModel usuarioModel = new usuarioModel();
+        Boolean validacao = false;
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, usuario);
+            stmt.setString(2, senha);
+            rs = stmt.executeQuery();
+            
+            if (usuario.equals(rs.getString("nomeUsuario")) && senha.equals(rs.getString("senhaUsuario"))) {
+                validacao = true;
+            }
+            
+        } catch (SQLException ex) {
+            throw new SQLException("Erro ao fazer login! Nome: " + rs.getString("nomeUsuario") + " e Senha: " + rs.getString("senhaUsuario"));
+        } finally {
+            dbConnection.encerrarConexao(conexao, stmt, rs);
+        }
+        return validacao;
+    }
 }

@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     
     usuarioController usuariocontroller = new usuarioController();
     usuarioModel usuariomodel = new usuarioModel();
+    loginController login = new loginController();
     
     /**
      * Creates new form login
@@ -234,12 +235,15 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if(txtUsuario.getText().equals("Guilherme") && txtSenha.getText().equals("123")){
-            JOptionPane.showMessageDialog(null, "Bem Vindo ao Sistema!");
-            loginController login = new loginController();
+//        if(txtUsuario.getText().equals("Guilherme") && txtSenha.getText().equals("123")){
+//            JOptionPane.showMessageDialog(null, "Bem Vindo ao Sistema!");
+//            loginController login = new loginController();
+//            login.abrirHome(this);
+//        }else{
+//            JOptionPane.showMessageDialog(null, "Nome ou Senha Inválidos!");
+//        }
+        if(usuariocontroller.validarUsuario(usuariomodel) == true){
             login.abrirHome(this);
-        }else{
-            JOptionPane.showMessageDialog(null, "Nome ou Senha Inválidos!");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

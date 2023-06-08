@@ -34,12 +34,30 @@ public class usuarioController {
             return false;
         }
     }
-     public boolean inserirUsuario(usuarioModel usuariomodel) {
+    
+    public boolean inserirUsuario(usuarioModel usuariomodel) {
         try {
             usuarioDao usuarioDAO = new usuarioDao();
             usuarioDAO.gravarUsuario(usuariomodel);
             JOptionPane.showMessageDialog(null, "Inserido com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro interno", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+     
+    
+    public boolean validarUsuario(usuarioModel usuariomodel){
+        try{
+            usuarioDao usuarioDAO = new usuarioDao();
+            if(usuarioDAO.validarUsuarioTeste(usuariomodel.getNomeUsuario(), usuariomodel.getSenhaUsuario()) == true){
+                JOptionPane.showMessageDialog(null, "Logado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
+                return true; 
+            } else {
+                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos!!", "Incorretos!!!!", JOptionPane.INFORMATION_MESSAGE);  
+                return false;
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro interno", JOptionPane.ERROR_MESSAGE);
             return false;
