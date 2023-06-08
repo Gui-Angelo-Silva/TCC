@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.usuarioModel;
 
 /**
@@ -104,28 +105,41 @@ public class usuarioDao {
         return validar;
     }
     
-    public boolean validarUsuarioTeste(String usuario, String senha) throws ClassNotFoundException, SQLException {
-        String sql = "SELECT * FROM usuario where nomeUsuario = ? and senhaUsuario = ?";
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        usuarioModel usuarioModel = new usuarioModel();
-        Boolean validacao = false;
+//    public boolean validarUsuarioTeste(String usuario, String senha) throws ClassNotFoundException, SQLException {
+//        String sql = "SELECT * FROM usuario where nomeUsuario = ? and senhaUsuario = ?";
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        usuarioModel usuarioModel = new usuarioModel();
+//        Boolean validacao = false;
+//        
+//        try {
+//            stmt = conexao.prepareStatement(sql);
+//            stmt.setString(1, usuario);
+//            stmt.setString(2, senha);
+//            rs = stmt.executeQuery();
+//            
+//            if (usuario.equals(rs.getString("nomeUsuario")) && senha.equals(rs.getString("senhaUsuario"))) {
+//                validacao = true;
+//            }
+//            
+//        } catch (SQLException ex) {
+//            throw new SQLException("Erro ao fazer login! Nome: " + rs.getString("nomeUsuario") + " e Senha: " + rs.getString("senhaUsuario"));
+//        } finally {
+//            dbConnection.encerrarConexao(conexao, stmt, rs);
+//        }
+//        return validacao;
+//    }
+    public void Login(String nomeUsuario, String senhaUsuario) throws SQLException, ClassNotFoundException{
+        Connection conexao = dbConnection.abrirConexaoComBancoDeDados();
+        String sql = "select nomeUsuario, senhaUsuario from usuario where nomeUsuario = '"+nomeUsuario+"' and senhaUsuario = '"+senhaUsuario+"'";
+        PreparedStatement statment = conexao.prepareStatement(sql);
+        ResultSet rs = statment.executeQuery();
         
-        try {
-            stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, usuario);
-            stmt.setString(2, senha);
-            rs = stmt.executeQuery();
-            
-            if (usuario.equals(rs.getString("nomeUsuario")) && senha.equals(rs.getString("senhaUsuario"))) {
-                validacao = true;
-            }
-            
-        } catch (SQLException ex) {
-            throw new SQLException("Erro ao fazer login! Nome: " + rs.getString("nomeUsuario") + " e Senha: " + rs.getString("senhaUsuario"));
-        } finally {
-            dbConnection.encerrarConexao(conexao, stmt, rs);
+        if(rs.next()){
+            JOptionPane.showMessageDialog(null, "Bem-Vindo ao Sistema!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Nome ou Sennha Incorretos!");
         }
-        return validacao;
+        conexao.close();
     }
 }

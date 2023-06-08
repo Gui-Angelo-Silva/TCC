@@ -5,12 +5,15 @@
  */
 package controller;
 
+import connection.dbConnection;
 import dao.usuarioDao;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import model.usuarioModel;
 import view.CadastroUsuario;
+import view.Login;
 
 /**
  *
@@ -46,22 +49,27 @@ public class usuarioController {
             return false;
         }
     }
-     
     
-    public boolean validarUsuario(usuarioModel usuariomodel){
-        try{
-            usuarioDao usuarioDAO = new usuarioDao();
-            if(usuarioDAO.validarUsuarioTeste(usuariomodel.getNomeUsuario(), usuariomodel.getSenhaUsuario()) == true){
-                JOptionPane.showMessageDialog(null, "Logado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
-                return true; 
-            } else {
-                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos!!", "Incorretos!!!!", JOptionPane.INFORMATION_MESSAGE);  
-                return false;
-            }
-        } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro interno", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+    public void loginUsuario(Login view) throws SQLException, ClassNotFoundException{
+        Connection con = dbConnection.abrirConexaoComBancoDeDados();
+        usuarioDao login = new usuarioDao();
+        login.Login(view.getLblNome().getText(), view.getLblSenha().getText());
     }
+    
+//    public boolean validarUsuario(usuarioModel usuariomodel){
+//        try{
+//            usuarioDao usuarioDAO = new usuarioDao();
+//            if(usuarioDAO.validarUsuarioTeste(usuariomodel.getNomeUsuario(), usuariomodel.getSenhaUsuario()) == true){
+//                JOptionPane.showMessageDialog(null, "Logado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
+//                return true; 
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos!!", "Incorretos!!!!", JOptionPane.INFORMATION_MESSAGE);  
+//                return false;
+//            }
+//        } catch (SQLException | ClassNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro interno", JOptionPane.ERROR_MESSAGE);
+//            return false;
+//        }
+//    }
 }
 

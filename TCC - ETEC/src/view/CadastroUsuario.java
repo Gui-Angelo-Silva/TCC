@@ -13,7 +13,7 @@ import model.usuarioModel;
  * @author Aluno
  */
 public class CadastroUsuario extends javax.swing.JFrame {
-
+        
     /**
      * Creates new form CadastroUsuario
      */

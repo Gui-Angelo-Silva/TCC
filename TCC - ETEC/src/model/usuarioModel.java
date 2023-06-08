@@ -10,12 +10,27 @@ package model;
  * @author Aluno
  */
 public class usuarioModel {
-    private int idUsuario;
-    private String nomeUsuario;
-    private String cargoUsuario;
-    private String emailUsuario;
-    private String senhaUsuario;
+    int idUsuario;
+    String nomeUsuario;
+    String cargoUsuario;
+    String emailUsuario;
+    String senhaUsuario;
 
+    public usuarioModel(String nomeUsuario, String senhaUsuario) {
+        this.nomeUsuario = nomeUsuario;
+        this.senhaUsuario = senhaUsuario;
+    }
+
+    public void Cadastrar(int idUsuario, String nomeUsuario, String cargoUsuario, String emailUsuario, String senhaUsuario) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.cargoUsuario = cargoUsuario;
+        this.emailUsuario = emailUsuario;
+        this.senhaUsuario = senhaUsuario;
+    }
+    
+    
+    
     /**
      * @return the idUsuario
      */

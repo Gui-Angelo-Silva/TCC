@@ -10,7 +10,12 @@ import controller.usuarioController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import model.usuarioModel;
 
 /**
@@ -20,7 +25,6 @@ import model.usuarioModel;
 public class Login extends javax.swing.JFrame {
     
     usuarioController usuariocontroller = new usuarioController();
-    usuarioModel usuariomodel = new usuarioModel();
     loginController login = new loginController();
     
     /**
@@ -71,8 +75,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JPasswordField();
+        lblNome = new javax.swing.JTextField();
+        lblSenha = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         txtCadastrar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -111,35 +115,35 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Login");
 
-        txtUsuario.setBackground(new java.awt.Color(46, 46, 46));
-        txtUsuario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setText("Nome");
-        txtUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        lblNome.setBackground(new java.awt.Color(46, 46, 46));
+        lblNome.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setText("Nome");
+        lblNome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        lblNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUsuarioFocusGained(evt);
+                lblNomeFocusGained(evt);
             }
         });
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+        lblNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
+                lblNomeActionPerformed(evt);
             }
         });
 
-        txtSenha.setBackground(new java.awt.Color(46, 46, 46));
-        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtSenha.setForeground(new java.awt.Color(255, 255, 255));
-        txtSenha.setText("senha");
-        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+        lblSenha.setBackground(new java.awt.Color(46, 46, 46));
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(255, 255, 255));
+        lblSenha.setText("senha");
+        lblSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        lblSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtSenhaFocusGained(evt);
+                lblSenhaFocusGained(evt);
             }
         });
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+        lblSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
+                lblSenhaActionPerformed(evt);
             }
         });
 
@@ -189,8 +193,8 @@ public class Login extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtSenha)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblSenha)
+                                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)))
@@ -207,9 +211,9 @@ public class Login extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
                 .addGap(61, 61, 61)
-                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -242,9 +246,22 @@ public class Login extends javax.swing.JFrame {
 //        }else{
 //            JOptionPane.showMessageDialog(null, "Nome ou Senha Inválidos!");
 //        }
-        if(usuariocontroller.validarUsuario(usuariomodel) == true){
-            login.abrirHome(this);
+//        if(usuariocontroller.validarUsuario(usuariomodel) == true){
+//            login.abrirHome(this);
+//        }
+        if(lblNome.getText().matches("") || lblSenha.getText().matches("")){
+            JOptionPane.showMessageDialog(rootPane, "PREENCHA TODOS OS CAMPOS!");
+        } else {
+            try {
+                usuariocontroller.loginUsuario(this);
+                login.abrirHome(this);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCadastrarMouseClicked
@@ -256,21 +273,39 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        txtUsuario.setText("");
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+    private void lblNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblNomeActionPerformed
+        lblNome.setText("");
+    }//GEN-LAST:event_lblNomeActionPerformed
 
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+    private void lblSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSenhaActionPerformed
 
-    }//GEN-LAST:event_txtSenhaActionPerformed
+    }//GEN-LAST:event_lblSenhaActionPerformed
 
-    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
-        txtUsuario.setText("");
-    }//GEN-LAST:event_txtUsuarioFocusGained
+    private void lblNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblNomeFocusGained
+        lblNome.setText("");
+    }//GEN-LAST:event_lblNomeFocusGained
 
-    private void txtSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusGained
-        txtSenha.setText("");
-    }//GEN-LAST:event_txtSenhaFocusGained
+    private void lblSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblSenhaFocusGained
+        lblSenha.setText("");
+    }//GEN-LAST:event_lblSenhaFocusGained
+
+    public JTextField getLblNome() {
+        return lblNome;
+    }
+
+    public void setLblNome(JTextField lblNome) {
+        this.lblNome = lblNome;
+    }
+
+    public JPasswordField getLblSenha() {
+        return lblSenha;
+    }
+
+    public void setLblSenha(JPasswordField lblSenha) {
+        this.lblSenha = lblSenha;
+    }
+
+    
 
     /**
      * @param args the command line arguments
@@ -316,8 +351,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField lblNome;
+    private javax.swing.JPasswordField lblSenha;
     private javax.swing.JLabel txtCadastrar;
-    private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

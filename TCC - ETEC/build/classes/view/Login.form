@@ -111,8 +111,8 @@
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="btnLogin" max="32767" attributes="0"/>
-                                      <Component id="txtSenha" max="32767" attributes="0"/>
-                                      <Component id="txtUsuario" min="-2" pref="270" max="-2" attributes="0"/>
+                                      <Component id="lblSenha" max="32767" attributes="0"/>
+                                      <Component id="lblNome" min="-2" pref="270" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="txtCadastrar" min="-2" pref="166" max="-2" attributes="0"/>
@@ -137,9 +137,9 @@
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="txtUsuario" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="lblNome" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="txtSenha" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="lblSenha" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="btnLogin" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -161,7 +161,7 @@
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtUsuario">
+            <Component class="javax.swing.JTextField" name="lblNome">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="2e" red="2e" type="rgb"/>
@@ -182,11 +182,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUsuarioFocusGained"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lblNomeFocusGained"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblNomeActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txtSenha">
+            <Component class="javax.swing.JPasswordField" name="lblSenha">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="2e" red="2e" type="rgb"/>
@@ -207,8 +207,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSenhaFocusGained"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSenhaActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lblSenhaFocusGained"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblSenhaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLogin">
