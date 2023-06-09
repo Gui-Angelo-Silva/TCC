@@ -15,7 +15,7 @@ public class dbConnection {
     public static Connection abrirConexaoComBancoDeDados() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/usuario", "postgres", "123");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/SigomDB", "postgres", "postdba");
         } catch (SQLException ex) {
             throw new SQLException("Erro de conexão com o banco de dados");
         } catch (ClassNotFoundException ex) {
