@@ -60,10 +60,10 @@ public class usuarioController {
         try{
             usuarioDao usuarioDAO = new usuarioDao();
             if(usuarioDAO.validarUsuarioTeste(usuariomodel.getNomeUsuario(), usuariomodel.getSenhaUsuario()) == true){
-                JOptionPane.showMessageDialog(null, "Logado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
+                JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
                 return true; 
             } else {
-                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos!!", "Incorretos!!!!", JOptionPane.INFORMATION_MESSAGE);  
+                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos!", "Incorreto", JOptionPane.INFORMATION_MESSAGE);  
                 return false;
             }
         } catch (SQLException | ClassNotFoundException ex) {

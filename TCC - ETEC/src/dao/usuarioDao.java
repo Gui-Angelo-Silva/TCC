@@ -119,8 +119,11 @@ public class usuarioDao {
             stmt.setString(2, senha);
             rs = stmt.executeQuery();
             
+            usuarioModel = new usuarioModel();
+            usuarioModel.setNomeUsuario("");
+            usuarioModel.setSenhaUsuario("");
+            
             while (rs.next()) {
-                usuarioModel = new usuarioModel();
                 usuarioModel.setNomeUsuario(rs.getString("nomeusuario"));
                 usuarioModel.setSenhaUsuario(rs.getString("senhausuario"));
             }
