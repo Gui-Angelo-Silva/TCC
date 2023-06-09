@@ -24,8 +24,9 @@ import model.usuarioModel;
  */
 public class Login extends javax.swing.JFrame {
     
-    usuarioController usuariocontroller = new usuarioController();
+    usuarioController usuarioController = new usuarioController();
     loginController login = new loginController();
+    usuarioModel usuariomodel = new usuarioModel();
     
     /**
      * Creates new form login
@@ -253,7 +254,11 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "PREENCHA TODOS OS CAMPOS!");
         } else {
             try {
-                usuariocontroller.loginUsuario(this);
+                usuariomodel.setNomeUsuario(lblNome.getText());
+                usuariomodel.setSenhaUsuario(lblSenha.getText());
+                if(usuarioController.validarUsuario(usuariomodel) == true) {
+                    login.abrirHome(this);
+                };
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -277,7 +282,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNomeActionPerformed
 
     private void lblSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSenhaActionPerformed
-
+        lblSenha.setText("");
     }//GEN-LAST:event_lblSenhaActionPerformed
 
     private void lblNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblNomeFocusGained
