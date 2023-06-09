@@ -6,6 +6,7 @@
 package dao;
 
 import connection.dbConnection;
+import controller.loginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.usuarioModel;
+import view.Home;
 
 /**
  *
@@ -22,7 +24,11 @@ import model.usuarioModel;
 public class usuarioDao {
 
     private Connection conexao;
-
+    
+    loginController login = new loginController();
+            
+    Home home = new Home();
+    
     public usuarioDao() throws SQLException, ClassNotFoundException {
         this.conexao = dbConnection.abrirConexaoComBancoDeDados();
     }
@@ -137,6 +143,7 @@ public class usuarioDao {
         
         if(rs.next()){
             JOptionPane.showMessageDialog(null, "Bem-Vindo ao Sistema!");
+            login.abrirHome(home);
         } else {
             JOptionPane.showMessageDialog(null, "Nome ou Sennha Incorretos!");
         }

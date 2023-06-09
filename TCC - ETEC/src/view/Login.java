@@ -254,7 +254,6 @@ public class Login extends javax.swing.JFrame {
         } else {
             try {
                 usuariocontroller.loginUsuario(this);
-                login.abrirHome(this);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

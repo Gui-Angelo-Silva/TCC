@@ -21,6 +21,10 @@ public class usuarioModel {
         this.senhaUsuario = senhaUsuario;
     }
 
+    public usuarioModel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void Cadastrar(int idUsuario, String nomeUsuario, String cargoUsuario, String emailUsuario, String senhaUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
