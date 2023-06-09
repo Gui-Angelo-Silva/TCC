@@ -5,7 +5,6 @@
  */
 package dao;
 
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import connection.dbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
